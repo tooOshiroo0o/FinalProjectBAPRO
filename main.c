@@ -20,7 +20,6 @@ int main() {
 
     switch (menu) {
         case 'A':
-            printf("Growth Tracker is under development.\n");
             break;
 
         case 'B':
@@ -28,11 +27,9 @@ int main() {
             break;
 
         case 'C':
-            printf("Sleep Tracker is under development.\n");
             break;
 
         case 'D':
-            printf("Health Database is under development.\n");
             break;
 
         default:
@@ -64,43 +61,118 @@ int ageCalculator() {
     if (dates[1][1] < dates[0][1] || (dates[1][1] == dates[0][1] && dates[1][2] < dates[0][2])) {
         ageInMonths -= 1; // Adjust if birthdate hasn't occurred yet this month
     }
-
-    printf("The child's age is %d months.\n", ageInMonths);
     return ageInMonths;
 }
 
+// Function to calculate remaining months for a vaccine dosage
+int vaccineCalculator(int interval, int ageInMonths) {
+    int nextDose = interval - ageInMonths; // Remaining months until the dosage
+    return (nextDose > 0) ? nextDose : 0; // If overdue, set remaining to 0
+}
+
 // Vaccine Tracker function
-void vaccineTracker() {
+void vaccineTracker(int ageInMonths) {
     char VaccineMenu;
+    int interval = 0;
+    int i;
+    int nextDose;
 
-    //Show overview of upcoming vaccines
-    printf ("Upcoming vaccinations: \n");
-    if ageInMonths == 1{
-        printf ("")
+    //Menu of upcoming vaccines based on different age groups
+    if (ageInMonths <= 6){
+        printf ("A. BCG/Polio\n");
+        printf ("B. Hepatitis B\n");
+        printf ("C. Rotavirus\n");
+        printf ("D. HiB\n");
+        scanf (" %c", &VaccineMenu);
+
+        switch (VaccineMenu){
+
+            case 'A':
+            printf ("      -- Polio/BCG --     \n");
+            printf ("Dosage | Due in   | Status\n");
+            interval = 2;
+            for (i = 0; i < 3; i ++){
+             nextDose = vaccineCalculator(interval, ageInMonths);
+             printf("%d      |%d Months  |   %c  \n",i+1, nextDose, nextDose == 0 ? 'V' : 'X');
+             interval +=2;              
+            }
+            break;
+
+            case 'B':
+            printf ("     -- Hepatitis B --    \n");
+            printf ("Dosage | Due in   | Status\n");
+            interval = 1;
+            for (i = 0; i < 4; i ++){
+             nextDose = vaccineCalculator(interval, ageInMonths);
+             printf("%d      |%d Months  |   %c  \n",i+1, nextDose, nextDose == 0 ? 'V' : 'X');
+             interval ++;              
+            }
+            
+            break;
+            
+            case 'C':
+            printf ("      -- Rotavirus --     \n");
+            printf ("Dosage | Due in   | Status\n");
+
+            interval = 2;
+
+            for (i = 0; i < 3; i ++){
+             nextDose = vaccineCalculator(interval, ageInMonths);
+             printf("%d      |%d Months  |   %c  \n",i+1, nextDose, nextDose == 0 ? 'V' : 'X');
+             interval +=2;              
+            }
+            
+            break;
+            
+            case 'D':
+            printf ("         -- HiB --        \n");
+            printf ("Dosage | Due in   | Status\n");
+
+            interval = 1;
+
+            for (i = 0; i < 3; i ++){
+             nextDose = vaccineCalculator(interval, ageInMonths);
+             printf("%d      |%d Months  |   %c  \n",i+1, nextDose, nextDose == 0 ? 'V' : 'X');
+             interval ++;              
+            }
+            
+            break;
+            
+            default:
+            printf ("Invalid Input! Try again!");
+            }
     }
+    else if (ageInMonths > 6 && ageInMonths <= 12){
+        printf ("A. Influenza\n");
+        printf ("B. MMR\n");
+        scanf (" %c", &VaccineMenu);
 
-    printf("More information:\n");
-    printf("A. BCG/Polio\n");
-    printf("B. Hepatitis B\n");
-    printf("C. Rotavirus\n");
-    printf("D. DTaP\n");
+        switch (VaccineMenu){
+            case 'A':
+            break;
+            
+            case 'B':
+            break;
+            
+            default:
+            printf ("Invalid Input! Try again!");
+        }
 
-    scanf("%c",&VaccineMenu);
-    
-    switch (VaccineMenu){
-        case 'A':
-        break;
+    }
+    else if (ageInMonths > 12 && ageInMonths <= 24){
+        printf ("A. Hepatitis A\n");
+        printf ("B. Varicella\n");
+        scanf (" %c", &VaccineMenu);
 
-        case 'B':
-        break;
-
-        case 'C':
-        break;
-
-        case 'D':
-        break;
-
-        default:
-        printf ("Invalid Input! Try Again!")
+        switch (VaccineMenu){
+            case 'A':
+            break;
+            
+            case 'B':
+            break;
+            
+            default:
+            printf ("Invalid Input! Try again!");
+        }
     }
 }
