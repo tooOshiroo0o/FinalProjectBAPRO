@@ -32,17 +32,57 @@ const GrowthStandards girlsStandards[6] = {
     {8.0, 11.5, 71.0, 79.0, 41.5, 46.5} // 12-18 months
 };
 
+<<<<<<< HEAD
 // Function declarations
 void vaccineTracker(int ageInMonths);
 int ageCalculator();
 void growthTracker(int ageInMonths);
 int isWithinRange(float value, float min, float max);
 
+=======
+// Define WHO standards for growth tracker
+typedef struct
+{
+    float minWeight;
+    float maxWeight;
+    float minHeight;
+    float maxHeight;
+    float minHeadCircumference;
+    float maxHeadCircumference;
+} GrowthStandards;
+
+// WHO growth standards data for boys and girls (in kg and cm)
+const GrowthStandards boysStandards[6] = {
+    {2.5, 4.4, 46.0, 54.0, 31.5, 36.5},  // 0-1 months
+    {3.4, 5.8, 52.0, 60.0, 34.0, 38.0},  // 1-3 months
+    {5.1, 7.8, 58.0, 66.0, 37.0, 42.0},  // 3-6 months
+    {6.4, 9.4, 64.0, 72.0, 39.0, 44.5},  // 6-9 months
+    {7.4, 10.5, 68.0, 76.0, 41.0, 46.0}, // 9-12 months
+    {8.4, 12.0, 72.0, 80.0, 42.0, 47.0}  // 12-18 months
+};
+
+const GrowthStandards girlsStandards[6] = {
+    {2.4, 4.2, 45.5, 53.0, 31.0, 36.0}, // 0-1 months
+    {3.2, 5.4, 51.0, 59.0, 33.5, 37.5}, // 1-3 months
+    {4.8, 7.3, 57.0, 65.0, 36.5, 41.5}, // 3-6 months
+    {6.0, 8.8, 63.0, 71.0, 38.5, 43.5}, // 6-9 months
+    {7.0, 9.9, 67.0, 75.0, 40.5, 45.5}, // 9-12 months
+    {8.0, 11.5, 71.0, 79.0, 41.5, 46.5} // 12-18 months
+};
+
+// Function declarations
+void vaccineTracker(int ageInMonths);
+int ageCalculator();
+void growthTracker(int ageInMonths);
+int isWithinRange(float value, float min, float max);
+
+>>>>>>> 6d81ef8134cd24c759460e9e15f0911e0ce39e19
 int main()
 {
     int ageInMonths = ageCalculator(); // Calculate child's age in months
     char menu;
 
+<<<<<<< HEAD
     do
     {
         printf("\nMenu Options:\n");
@@ -63,15 +103,35 @@ int main()
         case 'B':
             growthTracker(ageInMonths); // Call the Growth Tracker
             break;
+=======
+    printf("\nMenu Options:\n");
+    printf("A. Growth Tracker\n");
+    printf("B. Vaccine Tracker\n");
+    printf("C. Sleep Tracker\n");
+    printf("D. Health Database\n");
+    printf("Enter your choice: ");
+    scanf(" %c", &menu);
 
-        case 'C':
-            printf("Sleep Tracker is under development.\n");
-            break;
+    switch (menu)
+    {
+    case 'A':
+        growthTracker(ageInMonths); // Call the Growth Tracker
+        break;
 
-        case 'D':
-            printf("Health Database is under development.\n");
-            break;
+    case 'B':
+        vaccineTracker(ageInMonths); // Call the Vaccine Tracker
+        break;
+>>>>>>> 6d81ef8134cd24c759460e9e15f0911e0ce39e19
 
+    case 'C':
+        printf("Sleep Tracker is under development.\n");
+        break;
+
+    case 'D':
+        printf("Health Database is under development.\n");
+        break;
+
+<<<<<<< HEAD
         case 'E':
             printf("Exiting program. Thank you!\n");
             break;
@@ -80,6 +140,11 @@ int main()
             printf("Invalid Input! Try Again.\n");
         }
     } while (menu != 'E');
+=======
+    default:
+        printf("Invalid Input! Try Again!\n");
+    }
+>>>>>>> 6d81ef8134cd24c759460e9e15f0911e0ce39e19
 
     return 0;
 }
@@ -113,6 +178,7 @@ int ageCalculator()
     return ageInMonths;
 }
 
+<<<<<<< HEAD
 // Vaccine Tracker function
 void vaccineTracker(int ageInMonths)
 {
@@ -154,6 +220,22 @@ void growthTracker(int ageInMonths)
         printf("Growth Tracker supports ages 0 to 18 months only.\n");
         return;
     }
+=======
+// Function to check if a value is within a range
+int isWithinRange(float value, float min, float max)
+{
+    return value >= min && value <= max;
+}
+
+// Growth Tracker function
+void growthTracker(int ageInMonths)
+{
+    if (ageInMonths < 0 || ageInMonths > 18)
+    {
+        printf("Growth Tracker supports ages 0 to 18 months only.\n");
+        return;
+    }
+>>>>>>> 6d81ef8134cd24c759460e9e15f0911e0ce39e19
 
     char gender;
     do
@@ -236,4 +318,10 @@ void growthTracker(int ageInMonths)
     {
         printf("Head circumference is outside the healthy range (%.1f - %.1f cm).\n", currentStandards.minHeadCircumference, currentStandards.maxHeadCircumference);
     }
+}
+
+// Placeholder for Vaccine Tracker
+void vaccineTracker(int ageInMonths)
+{
+    printf("Vaccine Tracker is under development.\n");
 }
