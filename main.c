@@ -88,7 +88,7 @@ void vaccineTracker(int ageInMonths) {
         switch (VaccineMenu){
 
             case 'A':
-            printf ("      -- Polio/BCG --     \n");
+            printf ("-------- Polio/BCG -------\n");
             printf ("Dosage | Due in   | Status\n");
             interval = 2;
             for (i = 0; i < 3; i ++){
@@ -99,7 +99,7 @@ void vaccineTracker(int ageInMonths) {
             break;
 
             case 'B':
-            printf ("     -- Hepatitis B --    \n");
+            printf ("------- Hepatitis B ------\n");
             printf ("Dosage | Due in   | Status\n");
             interval = 1;
             for (i = 0; i < 4; i ++){
@@ -111,7 +111,7 @@ void vaccineTracker(int ageInMonths) {
             break;
             
             case 'C':
-            printf ("      -- Rotavirus --     \n");
+            printf ("-------- Rotavirus -------\n");
             printf ("Dosage | Due in   | Status\n");
 
             interval = 2;
@@ -125,7 +125,7 @@ void vaccineTracker(int ageInMonths) {
             break;
             
             case 'D':
-            printf ("         -- HiB --        \n");
+            printf ("----------- HiB ----------\n");
             printf ("Dosage | Due in   | Status\n");
 
             interval = 1;
@@ -149,9 +149,30 @@ void vaccineTracker(int ageInMonths) {
 
         switch (VaccineMenu){
             case 'A':
+            printf ("-------- Influenza -------\n");
+            printf ("Dosage | Due in   | Status\n");
+
+            interval = 12;
+
+            for (i = 0; i < 3 ; i ++){
+             nextDose = vaccineCalculator(interval, ageInMonths);
+             printf("%d      |%d Months  |   %c  \n",i+1, nextDose, nextDose == 0 ? 'V' : 'X');
+             interval ++;              
+            }
             break;
             
             case 'B':
+            printf ("----------- MMR ----------\n");
+            printf ("Dosage | Due in   | Status\n");
+
+            interval = 9;
+
+            for (i = 0; i < 1; i ++){
+             nextDose = vaccineCalculator(interval, ageInMonths);
+             printf("%d      |%d Months  |   %c  \n",i+1, nextDose, nextDose == 0 ? 'V' : 'X');
+             interval ++;              
+            }
+
             break;
             
             default:
@@ -166,9 +187,29 @@ void vaccineTracker(int ageInMonths) {
 
         switch (VaccineMenu){
             case 'A':
+            printf ("------ Hepatitis A -------\n");
+            printf ("Dosage | Due in   | Status\n");
+
+            interval = 6;
+
+            for (i = 0; i < 2; i ++){
+             nextDose = vaccineCalculator(interval, ageInMonths);
+             printf("%d      |%d Months  |   %c  \n",i+1, nextDose, nextDose == 0 ? 'V' : 'X');
+             interval ++;              
+            }
             break;
             
             case 'B':
+            printf ("-------- Varicella -------\n");
+            printf ("Dosage | Due in   | Status\n");
+
+            interval = 3;
+
+            for (i = 0; i < 2; i ++){
+             nextDose = vaccineCalculator(interval, ageInMonths);
+             printf("%d      |%d Months  |   %c  \n",i+1, nextDose, nextDose == 0 ? 'V' : 'X');
+             interval ++;              
+            }
             break;
             
             default:
