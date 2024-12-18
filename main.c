@@ -40,38 +40,45 @@ int isWithinRange(float value, float min, float max);
 int main()
 {
     int ageInMonths = ageCalculator(); // Calculate child's age in months
-
     char menu;
 
-    printf("\nMenu Options:\n");
-    printf("A. Growth Tracker\n");
-    printf("B. Vaccine Tracker\n");
-    printf("C. Sleep Tracker\n");
-    printf("D. Health Database\n");
-    printf("Enter your choice: ");
-    scanf(" %c", &menu);
-
-    switch (menu)
+    do
     {
-    case 'A':
-        growthTracker(ageInMonths); // Call the Growth Tracker
-        break;
+        printf("\nMenu Options:\n");
+        printf("A. Vaccine Tracker\n");
+        printf("B. Growth Tracker\n");
+        printf("C. Sleep Tracker\n");
+        printf("D. Health Database\n");
+        printf("E. Exit\n");
+        printf("Enter your choice: ");
+        scanf(" %c", &menu);
 
-    case 'B':
-        vaccineTracker(ageInMonths); // Call the Vaccine Tracker
-        break;
+        switch (menu)
+        {
+        case 'A':
+            vaccineTracker(ageInMonths); // Call the Vaccine Tracker
+            break;
 
-    case 'C':
-        printf("Sleep Tracker is under development.\n");
-        break;
+        case 'B':
+            growthTracker(ageInMonths); // Call the Growth Tracker
+            break;
 
-    case 'D':
-        printf("Health Database is under development.\n");
-        break;
+        case 'C':
+            printf("Sleep Tracker is under development.\n");
+            break;
 
-    default:
-        printf("Invalid Input! Try Again!\n");
-    }
+        case 'D':
+            printf("Health Database is under development.\n");
+            break;
+
+        case 'E':
+            printf("Exiting program. Thank you!\n");
+            break;
+
+        default:
+            printf("Invalid Input! Try Again.\n");
+        }
+    } while (menu != 'E');
 
     return 0;
 }
@@ -103,6 +110,33 @@ int ageCalculator()
 
     printf("The child's age is %d months.\n", ageInMonths);
     return ageInMonths;
+}
+
+// Vaccine Tracker function
+void vaccineTracker(int ageInMonths)
+{
+    printf("\nVaccine Tracker for %d-month-old child:\n", ageInMonths);
+
+    if (ageInMonths <= 1)
+    {
+        printf("Recommended: BCG, Hepatitis B\n");
+    }
+    else if (ageInMonths <= 3)
+    {
+        printf("Recommended: Polio, Rotavirus\n");
+    }
+    else if (ageInMonths <= 6)
+    {
+        printf("Recommended: DTaP, Hib, Hepatitis B\n");
+    }
+    else if (ageInMonths <= 12)
+    {
+        printf("Recommended: Measles, Mumps, Rubella (MMR)\n");
+    }
+    else
+    {
+        printf("Please consult with a pediatrician for additional vaccines.\n");
+    }
 }
 
 // Function to check if a value is within a range
@@ -201,10 +235,4 @@ void growthTracker(int ageInMonths)
     {
         printf("Head circumference is outside the healthy range (%.1f - %.1f cm).\n", currentStandards.minHeadCircumference, currentStandards.maxHeadCircumference);
     }
-}
-
-// Placeholder for Vaccine Tracker
-void vaccineTracker(int ageInMonths)
-{
-    printf("Vaccine Tracker is under development.\n");
 }
