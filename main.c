@@ -196,7 +196,9 @@ void vaccineTracker(int ageInMonths) {
             default:
             printf ("Invalid Input! Try again!");
             }
-else if (ageInMonths > 6 && ageInMonths <= 12){
+    }
+
+    else if (ageInMonths > 6 && ageInMonths <= 12){
         printf ("A. Influenza\n");
         printf ("B. MMR\n");
         scanf (" %c", &VaccineMenu);
@@ -269,6 +271,8 @@ else if (ageInMonths > 6 && ageInMonths <= 12){
             default:
             printf ("Invalid Input! Try again!");
         }
+    }
+}
 
 // Function to check if a value is within a range
 int isWithinRange(float value, float min, float max)
